@@ -2,7 +2,17 @@
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "my-black": "#343541",
+        "my-black-dark": "#202123",
+        "my-black-light": "hsla(0, 0%, 100%, .05)",
+        "my-green": "#11A37F",
+      },
+      height: {
+        screen: ["100vh", "100dvh"],
+      },
+    },
   },
   plugins: [],
 };
