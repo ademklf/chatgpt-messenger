@@ -1,10 +1,11 @@
+"use client";
 import NewChat from "./NewChat";
 
 function SideBar() {
   return (
-    <div className="p-2 flex flex-col h-screen">
+    <div className="flex h-screen flex-col p-2">
       <div className="flex-1">
-        <div>
+        <div className="flex flex-col gap-y-2">
           <NewChat />
           <div>{/*ModelSelection */}</div>
 
