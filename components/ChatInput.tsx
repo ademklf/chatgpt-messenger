@@ -1,9 +1,11 @@
 "use client";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 
 import { useState } from "react";
+import { db } from "../sevices/firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 type Props = {
   chatId: string;
@@ -12,6 +14,8 @@ type Props = {
 function ChatInput({ chatId }: Props) {
   const [prompt, setPromt] = useState<string>("");
   const { data: session } = useSession();
+
+  const model = "text-davinci-003";
 
   const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,6 +35,37 @@ function ChatInput({ chatId }: Props) {
           `https://ui-avatars.com/api/?name=${session?.user?.name}`,
       },
     };
+
+    await addDoc(
+      collection(
+        db,
+        "users",
+        session?.user?.email!,
+        "chats",
+        chatId,
+        "messages"
+      ),
+      message
+    );
+
+    const notification = toast.loading("ChatGPT is thinking ...");
+
+    await fetch("/api/askQuestion", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: input,
+        chatId,
+        model,
+        session,
+      }),
+    }).then(() => {
+      toast.success("ChatGPT has responded!", {
+        id: notification,
+      });
+    });
   };
 
   return (
