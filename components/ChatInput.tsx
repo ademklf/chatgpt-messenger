@@ -1,11 +1,11 @@
 "use client";
+// import type { Message } from "api-types";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-
 import { useState } from "react";
 import { db } from "../sevices/firebase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 type Props = {
   chatId: string;
@@ -50,7 +50,7 @@ function ChatInput({ chatId }: Props) {
 
     const notification = toast.loading("ChatGPT is thinking ...");
 
-    await fetch("/api/askQuestion", {
+    await fetch(`/api/askQuestion`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,11 +61,16 @@ function ChatInput({ chatId }: Props) {
         model,
         session,
       }),
-    }).then(() => {
-      toast.success("ChatGPT has responded!", {
-        id: notification,
+    })
+      .then((res) => {
+        // Toast notification to say successful
+        toast.success("ChatGPT has responded!", {
+          id: notification,
+        });
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
       });
-    });
   };
 
   return (
