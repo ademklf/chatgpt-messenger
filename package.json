@@ -1,5 +1,4 @@
 {
-  "homepage": "https://ademklf.github.io/chatgpt-messenger",
   "name": "chatgpt-messenger",
   "version": "0.1.0",
   "private": true,
@@ -7,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.16",
