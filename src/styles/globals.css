@@ -4,7 +4,7 @@
 
 @layer components {
   .infoText {
-    @apply max-w-[300px] rounded-lg bg-my-black-light p-4 hover:bg-my-black-dark;
+    @apply max-w-[300px] min-w-[175px] rounded-lg bg-my-black-light  hover:bg-my-black-dark;
   }
 
   .chatRow {

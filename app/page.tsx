@@ -6,13 +6,13 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center text-white">
-      <h1 className="mb-10 text-5xl font-bold">ChatGPT</h1>
+    <div className="flex  flex-col items-center justify-center text-white h-screen px-2">
+      <h1 className=" text-5xl font-bold mb-6  ">ChatGPT</h1>
 
       <div className="flex space-x-2 text-center">
         <div>
           <div className="mb-5 flex flex-col items-center justify-center gap-y-2">
-            <SunIcon className="h-8 w-8"></SunIcon>
+            <SunIcon className="h-7 w-7"></SunIcon>
             <h2>Examples</h2>
           </div>
 
@@ -31,7 +31,7 @@ export default function Home() {
 
         <div>
           <div className="mb-5 flex flex-col items-center justify-center gap-y-2">
-            <BoltIcon className="h-8 w-8"></BoltIcon>
+            <BoltIcon className="h-7 w-7"></BoltIcon>
             <h2>Capabilities</h2>
           </div>
 
@@ -50,7 +50,7 @@ export default function Home() {
 
         <div>
           <div className="mb-5 flex flex-col items-center justify-center gap-y-2">
-            <ExclamationTriangleIcon className="h-8 w-8"></ExclamationTriangleIcon>
+            <ExclamationTriangleIcon className="h-7 w-7"></ExclamationTriangleIcon>
             <h2>Limitations</h2>
           </div>
 
